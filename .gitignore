@@ -1,0 +1,8 @@
+# Jupyter Notebook
+ipynb_checkpoints/
+
+# mtn-proj access key
+.mp-key.yaml
+
+# Other
+.DS_Store
