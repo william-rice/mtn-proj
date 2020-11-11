@@ -1,3 +1,9 @@
-ipynb_checkpoints/
-.mp-key.yaml
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Access Key
+.mp-pkey.yaml
+
+# Other
 .DS_Store
+notes.txt
