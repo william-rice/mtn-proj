@@ -1,3 +1,4 @@
+import re
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
@@ -49,7 +50,11 @@ for area in areas:
     submit_area.click()
     routeFinderForm.submit()
     results_summary = driver.find_element_by_class_name("float-md-left")
-    print(results_summary.text)
+    too_many_results = re.search("1000", results_summary.text)
+    if too_many_results:
+        driver.back()
+        areas2()#Todo: define this function to basically do lines 40-56 one level down
+
     #To do: read the last number in the text
     #that appears before "Change Settings"
     driver.close()
