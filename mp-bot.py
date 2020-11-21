@@ -28,6 +28,7 @@ def set_search_settings(
     maximum_difficulty (ditto)
 
     """
+
     # Set type of route
     type = driver.find_element_by_id("type")
     Select(type).select_by_visible_text(route_type)
@@ -41,8 +42,6 @@ def set_search_settings(
     Select(diffMaxrock).select_by_visible_text(maximum_difficulty)
 
     all_options = diffMaxrock.find_elements_by_tag_name("option")
-
-set_search_settings()
 
 def get_element_from_list(link_elements, link_text):
     """
@@ -66,10 +65,9 @@ def get_element_from_list(link_elements, link_text):
         if el.get_attribute("data-area-title") == link_text:
             current_link = el
 
-    if current_link:
-        return current_link # if it's the last in the list, return just one
+    return current_link # if it's the last in the list, return just one
 
-def download_routes(path=["International"]):
+def download_routes(path=["Alaska"]):
     print(path)
 
     # Click "Change" to open dialog window (do this every time)
@@ -82,14 +80,13 @@ def download_routes(path=["International"]):
         links = links_container.find_elements_by_xpath(".//a")
 
         # Get the link for this area and the next (on this level)
-        [current_link, next_sibling] = get_element_from_list(links,area) # defined above
+        [current_link, next_sibling] = get_element_from_list(links,area)
         next_sibling_text = next_sibling.get_attribute("data-area-title")
         current_text = current_link.get_attribute("data-area-title")
         #print(cond.element_to_be_clickable(By.LINK_TEXT("International")))
         #WebDriverWait(driver,10).until(lambda x: x.find_element_by_link_text(current_text).element_to_be_clickable())
         current_link.click()
         if area != path[-1]:
-            print("we continued")
             continue # go all the way down the path
 
         # Get the first child name for navigation
@@ -114,11 +111,12 @@ def download_routes(path=["International"]):
             driver.back()
             download_routes(path)
         else:
-            print("downloaded path") # this means download for now
+            print("downloaded path") # download CSV, os.route_to_file
             path.pop()
             path.append(next_sibling_text)
             driver.back()
             download_routes(path)
 
+set_search_settings()
 download_routes()
 driver.close()
