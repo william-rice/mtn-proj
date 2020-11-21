@@ -1,11 +1,17 @@
 # mtn-proj
 
-`mp-bot.py` will use Selenium to navigate through mountain project's site, downloading routes from various areas.
+`mp-bot.py` uses Selenium to navigate through mountain project's site, downloading route data from various areas as csv files and storing them in the folder `csv-routes`.
 
-`mp-request.py` will pull the route-IDs from the downloaded data in order to query the site's API (which offers limited complimentary data). It will then augment the scraped data with the queried data.
+`union-csvs.ipynb` opens that folder, reads in all the csv data,  combines that data into one frame, and writes the combined result out into the file `scraped.csv` (so named because this data was scraped from the site using `mp-bot.py`).
 
-`exploratory.ipynb` is a Jupyter Notebook for running exploratory data analyses on the full dataset.
+`request-routes.ipynb` opens `scraped.csv` to read off the route IDs from the URL column, queries the Mountain Project API for more data on those routes, and stores the responses as json files in the `json-routes` folder.
 
-The remaining files are for building data visualizations to be hosted on GitHub pages.
+`combine_routes.ipynb` merges the scraped data with the queried data for a more complete dataset, writing the result to the `merged.csv` file.
 
-Possible additions may include building new app features (like a route recommender) from the data.
+`exploratory.ipynb` runs exploratory data analyses on the full dataset, and contains
+
+Possible next directions include:
+
+1. building a static site that uses D3.js to display those visualizations in GitHub Pages.
+
+2. building new app functionalities (like a route recommender) from the data.
