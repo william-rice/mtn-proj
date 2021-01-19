@@ -12,4 +12,4 @@
 
 ---
 
-Update: Unfortunately, the Mountain Project Data API is no longer available, so the project stops here.
+Update: Unfortunately, the Mountain Project Data API is no longer available, so this project is now discontinued.
