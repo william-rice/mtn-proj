@@ -13,3 +13,5 @@
 ---
 
 Update: Unfortunately, the Mountain Project Data API is no longer available, so this project is now discontinued.
+
+A few visualizations with the data I was able to pull before the API went down remain visible [here](https://nbviewer.jupyter.org/github/william-rice/mtn-proj/blob/main/exploratory.ipynb).
